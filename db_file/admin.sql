@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2024 at 06:46 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Feb 10, 2025 at 12:39 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `php_sample`
+-- Database: `admin`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` float NOT NULL,
+  `detail` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `price`, `detail`, `image`, `user`) VALUES
+(2, 'sabun', 50, '0', 'uploads/67939f675b2516.11267797.png', 4),
+(3, 'sabun', 500, 'lakeihduqwhed', 'uploads/679c78eddb4700.07704926.png', 4),
+(4, 'test ptoduct', 88, 'ldfkgl;dfkgl;dfkg gdf;lkgdf ;lgkdfl;g kdf;lgk dfg', 'uploads/679c7b6c382713.51709887.png', 4);
 
 -- --------------------------------------------------------
 
@@ -36,7 +60,7 @@ CREATE TABLE `users` (
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `phone` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -44,11 +68,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`, `created_date`, `phone`) VALUES
 (1, 'ramji', 'admin@gmail.com', '$2y$10$fSrCWXluB4BbbDxvP1NXUeuov.rFgii1w/WG/rC6idJMGkUUnEm8O', 0, 1, '2024-12-29 05:18:56', ''),
-(3, 'ramji', 'admin1@gmail.com', '$2y$10$8hRAo8x9UCfBND5PzTCawOGgi4Cymd/PacqtUCJvZVewEslBgGBqy', 0, 1, '2024-12-29 05:45:58', '');
+(3, 'ramji', 'admin1@gmail.com', '$2y$10$8hRAo8x9UCfBND5PzTCawOGgi4Cymd/PacqtUCJvZVewEslBgGBqy', 0, 1, '2024-12-29 05:45:58', ''),
+(4, 'Aawash hero', 'aawash@gmail.com', '$2y$10$aTRXF/6MHmMPQy5Z5LYvP.d3f43/XonWvhH6eQK1yTiOsIGoIs2ku', 0, 1, '2025-01-23 07:41:02', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -62,10 +93,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
