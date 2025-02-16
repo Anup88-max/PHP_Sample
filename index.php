@@ -1,9 +1,16 @@
+<?php 
+require_once('config/db.php');
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="admin/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -27,7 +34,7 @@
               <a href="#shop-section" class="navbar-link">SHOP</a>
             </li>
             <li class="navbar-list">
-              <a href="#contractUs-section" class="navbar-link">CONTRACT US</a>
+              <a href="#contractUs-section" class="navbar-link">CONTACT US</a>
             </li>
           </ul>
         </div>
@@ -90,32 +97,34 @@
           the majority have suffered alteratio
         </p>
       </div>
+       <?php while($row = $result->fetch_assoc()) { ?>
       <div class="product-container grid grid-three--cols">
         <div class="card">
-          <p class="card-heading">Chair 1</p>
+          <p class="card-heading"><?=$row['name'];?></p>
           <div class="card-image">
-            <img class="image" src="/admin/img/img-3.png" alt="" />
+            <img class="image" src="admin/<?=$row['image'];?>" alt="" />
           </div>
-          <p class="card-price">Price $100</p>
+          <p class="card-price">Price $<?=$row['price'];?></p>
           <a class="buyNow-button" href="">BUY NOW</a>
         </div>
         <div class="card">
-          <p class="card-heading">Chair 2</p>
+          <p class="card-heading"><?=$row['name'];?></p>
           <div class="card-image">
-            <img class="image" src="/admin/img/img-4.png" alt="" />
+            <img class="image" src="admin/<?=$row['image'];?>" alt="" />
           </div>
-          <p class="card-price">Price $100</p>
+          <p class="card-price">Price $<?=$row['price'];?></p>
           <a class="buyNow-button" href="">BUY NOW</a>
         </div>
         <div class="card">
-          <p class="card-heading">Table</p>
+          <p class="card-heading"><?=$row['name'];?></p>
           <div class="card-image">
-            <img class="image" src="/admin/img/img-5.png" alt="" />
+            <img class="image" src="admin/<?=$row['image'];?>" alt="" />
           </div>
-          <p class="card-price">Price $100</p>
+          <p class="card-price">Price $<?=$row['price'];?></p>
           <a class="buyNow-button" href="">BUY NOW</a>
         </div>
       </div>
+      <?php } ?>
       <!-- <div class="section-slider">
         <i class="fa-solid fa-arrow-left"></i>
         <i class="fa-solid fa-arrow-right"></i>

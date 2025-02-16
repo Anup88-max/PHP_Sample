@@ -9,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
         unset($_SESSION['redirect_url']);  // Remove redirect URL after use
         header("Location: $redirect_url");
     } else {
-        // Redirect to the homepage if no redirect URL is set
+        // Redirect to the homepag e if no redirect URL is set
         header("Location: index.php");
     }
     exit();
